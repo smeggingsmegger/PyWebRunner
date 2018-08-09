@@ -37,7 +37,7 @@ setup(
     packages=['PyWebRunner'],
     data_files=[('extensions', ['JSErrorCollector.xpi', 'JSErrorCollector.crx'])],
     include_package_data=True,
-    install_requires=['xvfbwrapper', 'selenium==3.3.0', 'pyaml'],
+    install_requires=['xvfbwrapper', 'selenium', 'pyaml'],
     keywords=['Selenium', 'Testing'],
     entry_points='''
         [console_scripts]
