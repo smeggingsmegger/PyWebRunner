@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.0.4] - 2020-03-06
+### Changed
+- Removed js_errorcollector by default. Enabled kwarg option.
+
 ## [1.9.6] - 2017-08-14
 ### Changed
 - (Python 3) Fixed byte encoding on chromedriver version in URL.

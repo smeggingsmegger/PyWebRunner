@@ -94,7 +94,7 @@ class WebRunner(object):
         self.width = os.environ.get('WR_WIDTH', width)
         # XVFB virtual monitor width
         self.height = os.environ.get('WR_HEIGHT', height)
-        self.js_errorcollector = True
+        self.js_errorcollector = kwargs.get('js_errorcollector', False)
 
         self.desired_capabilities = os.environ.get(
             'WR_DESIRED_CAPABILITIES', desired_capabilities)
@@ -164,11 +164,12 @@ class WebRunner(object):
 
             if self.driver == 'chrome-headless':
                 chrome_options.add_argument("--headless")
-            try:
-                extension = pkg_resources.resource_filename('PyWebRunner', "../../../../extensions/JSErrorCollector.crx")
-                chrome_options.add_extension(extension)
-            except IOError:
-                self.js_errorcollector = False
+            if self.js_errorcollector:
+                try:
+                    extension = pkg_resources.resource_filename('PyWebRunner', "../../../../extensions/JSErrorCollector.crx")
+                    chrome_options.add_extension(extension)
+                except IOError:
+                    self.js_errorcollector = False
 
             try:
                 self.browser = webdriver.Chrome(chrome_options=chrome_options)
